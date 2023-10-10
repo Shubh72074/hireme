@@ -45,7 +45,7 @@ const PostJobs = () => {
             [{ 'list': 'ordered' }, { 'list': 'bullet' }],
             ['link'],
             ['clean'],
-          ],
+          ]
         }}
         formats={[
           'header',

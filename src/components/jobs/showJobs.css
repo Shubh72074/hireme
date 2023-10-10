@@ -2,25 +2,31 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  gap: 1rem;
-  padding: 0.5rem;
+  gap: 18px;
+  padding: 1.5rem 0.5rem 0.5rem 0.5rem;
   border-radius: 1rem;
+  min-height: 480px;
 }
 
 .job-card {
+  position: relative;
   display: flex;
-  background-color: rgb(247, 223, 209);
-  border: 1px solid rgb(214, 157, 129);
+  background-color: rgb(251, 236, 228);
+  border: 2px solid rgb(214, 157, 129);
   border-radius: 8px;
-  padding: 4px;
-  gap: 10px;
+  padding: 8px;
+  gap: 14px;
   align-items: center;
+  transition: all 180ms ease-in-out;
 }
 
-.job-card:hover {
-  background-color: rgb(255, 199, 184);
+.job-card:hover{
+  background-color: rgb(111, 46, 27);
   cursor: pointer;
+  color: white;
+  border: 2px solid rgb(255, 255, 255);
 }
+
 
 .job-card img {
   border-radius: 50%;
@@ -28,9 +34,9 @@
 }
 
 .job-title {
-  font-weight: 500;
-  font-size: small;
-  color: rgb(183, 61, 5);
+  font-weight: 800;
+  font-size: 14px;
+  color: inherit;
 }
 
 .company-name {
@@ -43,6 +49,7 @@
   float: inline-start;
   padding: 3px 8px;
   text-align: center;
+  color: black;
 }
 
 .salary {
@@ -75,6 +82,7 @@
   flex-wrap: wrap;
 }
 
+
 .job-info {
   display: flex;
   flex-wrap: wrap;
@@ -105,4 +113,28 @@
   border-radius: 50%;
   color: wheat;
   background-color: rgb(183, 61, 5);
+}
+
+@media screen and (min-width:910px) {
+  .job-card:hover::after {
+    content: "APPLY";
+    background-color: white;
+    color: rgb(198, 60, 0);
+    padding: 8px 12px;
+    margin-right: 1rem;
+    border-radius: 12px;
+    font-style: italic;
+  }
+  .job-card:hover::before {
+    position: absolute;
+    right: 90px;
+    font-style: italic;
+    content: "SHOW DETAILS";
+    background-color: rgb(255, 251, 166);
+    color: rgb(143, 98, 1);
+    padding: 8px 12px;
+    margin-right: 1rem;
+    border-radius: 12px;
+  
+  }
 }

@@ -1,0 +1,68 @@
+.main-container {
+  display: grid;
+  grid-template-columns: 1.2fr 2fr 0.1fr;
+}
+
+.call_action {
+  position: sticky;
+  top: 15px;
+  justify-self: center;
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 95%;
+  max-width: 480px;
+  height: fit-content;
+  background-color: rgba(255, 231, 216, 0.879);
+  border-radius: 17px;
+  gap: 9px;
+  justify-content: center;
+  padding: 12px;
+}
+
+.call_action p {
+  margin-bottom: 10px;
+  font-weight: 300;
+  text-align:center;
+  font-size: small;
+  padding: 0 10px;
+  color: rgba(134, 36, 8, 0.992);
+}
+
+.call_action button {
+  position: relative;
+  bottom: 8px;
+  width: 100%;
+  background-color: rgba(163, 37, 2, 0.546);
+  color: #ffffff;
+  padding: 10px;
+  border: none;
+  border-radius: 1rem;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  font-family: "POPPINS";
+}
+
+.call_action input {
+  position: relative;
+  bottom: 10px;
+  width: 100%;
+  color: #864805cb;
+  padding: 10px;
+  text-align: center;
+  border: none;
+  border-radius: 1rem;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  font-family: "POPPINS";
+}
+
+@media screen and (max-width:640px) {
+  .call_action {
+    display: none;
+  }
+  .main-container {
+    display: block;
+  }
+}

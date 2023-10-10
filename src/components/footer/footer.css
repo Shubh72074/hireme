@@ -1,11 +1,8 @@
 .footer-container {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   background-color: rgb(172, 75, 14);
-  padding: 0.7rem;
-  align-items: center;
-  justify-content: space-around;
-  height: max-content;
+
 }
 
 .footer-container>section {
@@ -66,8 +63,9 @@
   transform: skewX(-8deg);
 }
 
+
 @media screen and (max-width: 600px) {
   .footer-container {
-    justify-content: left;
+    justify-content: space-between;
   }
 }

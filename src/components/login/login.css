@@ -1,0 +1,164 @@
+.form {
+  display: flex;
+  height: 100dvh;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 253, 251);
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  padding: 2rem;
+  background-color: rgb(255, 255, 255);
+  border-radius: 28px;
+  gap: 1.5rem;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.24);
+  border: 1px solid rgba(210, 9, 9, 0.227);
+}
+
+.loginForm label {
+  font-weight: 400;
+  font-size: medium;
+  margin-left: 2px;
+  color: rgb(255, 113, 61);
+}
+
+.loginForm input {
+  margin-top: -12px;
+  padding: 10px 24px;
+  font-size: small;
+  font-weight: 300;
+  border: 2px solid rgb(255, 208, 191);
+  border-radius: 12px;
+  outline: none;
+  background: none;
+}
+
+.loginForm input:focus {
+  border: 2px solid rgb(255, 167, 135);
+}
+
+.loginForm div {
+  display: flex;
+  gap: 1rem;
+}
+
+.loginForm div button {
+  padding: 10px 24px;
+  font-size: medium;
+  font-weight: 300;
+  border-radius: 12px;
+}
+
+.loginForm div button:nth-child(1) {
+  background-color: orangered;
+  border: 1px solid rgb(255, 68, 0);
+  color: white;
+  flex: 2;
+}
+
+.loginForm div button:nth-child(2) {
+  background-color: rgb(255, 248, 245);
+  border: 1px solid rgba(255, 68, 0, 0.356);
+  color: rgb(255, 25, 0);
+  flex: 1;
+}
+
+.registerForm {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  padding: 2rem;
+  background-color: rgb(255, 255, 255);
+  border-radius: 28px;
+  gap: 1.5rem;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.24);
+  border: 1px solid rgba(210, 9, 9, 0.227);
+}
+
+.registerForm label {
+  font-weight: 400;
+  font-size: medium;
+  margin-left: 2px;
+  color: rgb(255, 113, 61);
+}
+
+.registerForm input {
+  margin-top: -12px;
+  padding: 10px 24px;
+  font-size: small;
+  font-weight: 300;
+  border: 2px solid rgb(255, 208, 191);
+  border-radius: 12px;
+  outline: none;
+  background: none;
+}
+
+.registerForm input:focus {
+  border: 2px solid rgb(255, 167, 135);
+}
+
+.registerForm div {
+  display: flex;
+  gap: 1rem;
+}
+
+.registerForm div button {
+  padding: 10px 24px;
+  font-size: medium;
+  font-weight: 300;
+  border-radius: 12px;
+}
+
+.registerForm div button:nth-child(1) {
+  background-color: orangered;
+  border: 1px solid rgb(255, 68, 0);
+  color: white;
+  flex: 2;
+}
+
+.registerForm div button:nth-child(2) {
+  background-color: rgb(255, 248, 245);
+  border: 1px solid rgba(255, 68, 0, 0.356);
+  color: rgb(255, 25, 0);
+  flex: 1;
+}
+
+
+
+input#email.error {
+  animation: 200ms shake;
+}
+
+input#pass.error {
+  animation: 200ms shake;
+}
+
+input#rpass.error {
+  animation: 200ms shake;
+}
+
+input#remail.error {
+  animation: 200ms shake;
+}
+
+input#rname.error {
+  animation: 200ms shake;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(-5%);
+  }
+  30% {
+    transform: translateX(5%);
+  }
+  60% {
+    transform: translateX(-5%);
+  }
+  100% {
+    transform: translateX(5%);
+  }
+}

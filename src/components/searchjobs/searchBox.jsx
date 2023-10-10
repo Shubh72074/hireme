@@ -1,10 +1,13 @@
 import { AiOutlineClose, AiOutlineSearch, } from "react-icons/ai";
 import "./searchBox.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Alert from "../alert/alert";
 
 const SearchBox = () => {
   const nav = useNavigate();
+  const [showAlert, setShowAlert] = useState(false);
+
   useEffect(()=> {
     const inputVal = document.getElementById("query");
     const ul = document.getElementById('tags').childNodes;
@@ -14,7 +17,14 @@ const SearchBox = () => {
         inputVal.value = e.target.textContent;
       })
     })
-  },[])
+  },[nav]);
+
+  const handleAlert = () => {
+    setShowAlert(true);
+    setTimeout(()=>{
+      setShowAlert(false);
+    },2000)
+  }
 
   const handleClearClick = () => {
     const inputVal = document.getElementById("query");
@@ -24,11 +34,13 @@ const SearchBox = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     const inputVal = document.getElementById("query");
-    inputVal.value ===""?inputVal.style.cssText="" : nav(`/jobs/${inputVal.value}`)
+    const param = encodeURIComponent(inputVal.value);
+    inputVal.value ===""? handleAlert() : nav(`/jobs/${param}`)
   }
 
   return (
     <div className="search-container">
+      {showAlert && <Alert type = "ERROR" msg="NO_INPUT_ERROR" />}
       <h1>Over 250+ Hiring Partners and Companies</h1>
       <p>Get your dream job with us. Search through 1000+ jobs and find your suitable profile.</p> 
       <div className="search-box">
@@ -48,8 +60,8 @@ const SearchBox = () => {
           <li>Product</li>
           <li>Business</li>
           <li>Data</li>
-          <li>DevOps/Sysadmin</li>
-          <li>Finance/Legal</li>
+          <li>DevOps / Sysadmin</li>
+          <li>Finance / Legal</li>
           <li>Human Resources</li>
           <li>QA</li>
           <li>Writing</li>

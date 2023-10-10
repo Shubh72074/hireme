@@ -1,0 +1,135 @@
+.job-apply-container
+{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+.job-apply-div {
+  padding: 0px 10px; 
+  display: grid;
+  gap: 6px;
+}
+
+.job-apply-div p {
+  color: black;
+  font-family: 'Poppins';
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.job-apply-div li {
+  color: rgb(37, 37, 37);
+  font-family: 'Poppins';
+  font-weight: 500;
+  font-size: medium;
+}
+
+.job-apply-div .h3 {
+  color: rgb(213, 19, 19);
+  font-family: 'Poppins';
+  font-weight: 500;
+  font-size: medium;
+}
+
+.job-apply-div strong {
+  color: rgb(159, 109, 0);
+  font-family: 'Poppins';
+  font-weight: 700;
+  font-size: small;
+}
+
+.company-details {
+  position: sticky;
+  display: flex;
+  top: 0;
+  width: 100%;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1rem;
+  height: 100vh;
+  background-color: rgba(252, 234, 233, 0.28);
+  padding: 2.4rem 1.3rem;
+}
+
+.company-details>p:nth-child(1) {
+  color: rgb(195, 52, 0);
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.company-details>p:nth-child(2) {
+  color: rgb(255, 94, 35);
+  font-weight: 300;
+  font-size: small;
+}
+
+.company-details>p:nth-child(3) {
+  color: rgb(169, 119, 100);
+  font-weight: 400;
+  font-size: small;
+  margin-top: -0.6rem;
+}
+.company-details>p:nth-child(4) {
+  color: rgb(255, 94, 35);
+  font-weight: 300;
+  font-size: small;
+}
+
+.company-details>p:nth-child(5) {
+  color: rgb(169, 119, 100);
+  font-weight: 400;
+  font-size: small;
+  margin-top: -0.6rem;
+}
+.company-details>p:nth-child(6) {
+  color: rgb(255, 94, 35);
+  font-weight: 300;
+  font-size: small;
+}
+
+.company-details>p:nth-child(7) {
+  color: rgb(169, 119, 100);
+  font-weight: 400;
+  font-size: small;
+  margin-top: -0.6rem;
+}
+
+.company-details>div {
+  display: flex;
+  justify-content: left;
+  gap: 1rem;
+}
+
+.company-details>div>button:nth-child(1) {
+  padding: 0.4rem 1.4rem;
+  border-radius: 2px;
+  font-weight: 400;
+  transition: all 150ms ease-in-out;
+
+  background-color: rgb(255, 51, 0);
+  border: 1px solid rgb(255, 68, 0);
+  color: white;
+}
+.company-details>div>button:nth-child(2) {
+  padding: 0.4rem 1.4rem;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(95, 95, 95);
+  color: rgb(49, 49, 49);
+  border-radius: 2px;
+  font-weight: 400;
+}
+
+.company-details>div>button:nth-child(1):hover {
+  background-color: rgb(255, 239, 235);
+  border: 1px solid rgb(255, 157, 122);
+  color: rgb(49, 49, 49);
+}
+
+@media screen and (max-width:600px) {
+  .job-apply-container {
+    grid-template-columns: none;
+    grid-template-rows: 2fr auto;
+  }
+  .company-details {
+    height: fit-content;
+  }
+}

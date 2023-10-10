@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./header.css";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineCloseCircle, AiOutlineMenu } from "react-icons/ai";
 import { useAuth } from "../../context/authUser";
+import {BiEdit} from 'react-icons/bi';
+import {MdAlternateEmail} from 'react-icons/md';
 
 const Header = () => {
-  const { user } = useAuth();
+  const { userData, fetchUser, logout } = useAuth();
+  const [profile, setProfile] = useState(null);
+  const nav = useNavigate();
+
+  useEffect(() => {
+    const load = async () => {
+      if (!!sessionStorage.getItem("token")) 
+      {
+        const res = await fetchUser(sessionStorage.getItem("token"));
+        if (res) {
+          setProfile(res);
+        }
+      }
+    }
+    load();
+  },[userData,fetchUser]);
 
   return (
     <nav className="header">
@@ -55,7 +73,28 @@ const Header = () => {
         </span>
       </div>
       
-      {user != null? <div>LOGGED IN</div>: <div>
+      {profile != null ? <div className="profileMenuDiv">
+          <button 
+            className="user-profile">
+              <img onClick={
+                (e)=>{
+                  e.preventDefault();
+                  const dropprofile = document.getElementById("drop-profile");
+                  dropprofile.classList.toggle('show');
+                }
+            } 
+              src={profile.profilePic || `https://robohash.org/${profile.name}`} alt="profile" width={'38px'} height={'38px'} loading="lazy"/>
+          </button>
+          <div className="drop-profile" id="drop-profile">
+            <Link to={'/user'}><p id="name">{profile.name} <BiEdit/></p></Link>
+            <p id="email"><MdAlternateEmail/>{profile.email}</p>
+            <hr />
+            <div id="_lbtn"><button onClick={(e) => {e.preventDefault(); logout();}}>Sign Out</button></div>
+          </div>
+      </div>
+      
+      :
+       <div>
         <div className="desk-header">
           <div>
             <a
@@ -95,11 +134,11 @@ const Header = () => {
           }}>
             <AiOutlineCloseCircle color="#990011" size={"36px"} />
           </button>
-          <button>
-            <a href="/login">LogIn / SignUp</a>
+          <button onClick={()=> {nav('/login')}}>
+            LogIn / SignUp
           </button>
-          <button>
-            <a href="/employer/post-job">Post Job</a>
+          <button onClick={()=>{nav('/employer/post-job')}}>
+            Post Job
           </button>
         </div>
       </div>}
