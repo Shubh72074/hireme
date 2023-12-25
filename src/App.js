@@ -1,56 +1,45 @@
 import Home from "./pages/home/home";
 import Terms from "./pages/terms/terms";
 import About from "./pages/about/about";
-import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
-import PostJobs from "./pages/employer/postjobs";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import PageNotFound from "./pages/error/page-not-found";
-import JobApply from "./components/job-apply/jobApply";
-import FilterJobs from "./components/filterJobs/filterJobs";
 import Blogs from "./components/blogs/Blogs";
 import Login from "./components/login/Login";
-import User from "./pages/user/user";
-import Dashboard from "./components/dashboard/dashboard";
+import User from "./components/user/user.jsx";
+import UserProfile from "./components/user/userprofile/userprofile";
+import UserSettings from "./components/user/usersettings/usersettings";
+import Employer from "./components/employer/employer";
+import ShowJobs from "./components/jobs/showJobs.jsx";
+import JobApply from "./components/job-apply/jobApply.jsx";
+import FilterJobs from "./components/filterJobs/filterJobs.jsx";
+import TypeFilterJobs from "./components/TypeFilter/TypeFilterJobs.jsx";
+// import Dashboard from "./components/dashboard/dashboard.jsx";
 
 function App() {
-
-  const isLoggedIn = !!sessionStorage.getItem("id");
-
+  const isLoggedIn = !!sessionStorage.getItem("token");
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<Home/>}/>
-        <Route path="/terms-and-policy" element={<Terms/>}/>
-        <Route path="/about" element={<About/>}/>
-        <Route 
-          path="/login" 
-          element={isLoggedIn ? <Navigate to="/user" replace /> : <Login />} 
-        >
-          <Route path="*" element = {<Navigate to="/login" replace />} />
-        </Route>
-        <Route
-          path="/user"
-          element={<User/>}
-        >
-          <Route path="*" element = {<User/>} />
-        </Route>
-
-        <Route path="/jobs/:param" element={<FilterJobs/>}/>
-
-        <Route path="/employer">
-          <Route path="post-job" element={<PostJobs/>}/>
-          <Route path="dashboard" element={<Dashboard/>} />
-        </Route>
-        <Route path="/job" >
-          <Route path=":jobid" element = {<JobApply/>} />
-          <Route exact path="/job/" element = {<Home/>} />
-        </Route>
-        <Route path="/blogs">
-          <Route path=":id" element= {<Blogs/>} />
-        </Route>
-        <Route path="*" element={<PageNotFound/>}/>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/terms-and-policy/*" element={<Terms />} />
+        <Route path="/about/*" element={<About />} />
+        <Route path="/login/*" element={isLoggedIn ? <Navigate to="/user" replace /> : <Login />}/>
+        <Route path="/user/*" element={<User />} />
+        <Route path="/user/profile/*" element={<UserProfile />} />
+        <Route path="/user/settings/*" element={<UserSettings />} />
+        <Route path="/employer/*" element={<Employer />} />
+        <Route path="/blogs/:id" element={<Blogs />} />
+        <Route path="*" element={<PageNotFound />} />
+        <Route path="/jobs" element={<ShowJobs/>} />
+        <Route path="/job/:jobid" element={<JobApply/>} />
+        <Route path="/jobs/:param" element={<FilterJobs/>} />
+        <Route path="/jobss/:type" element={<TypeFilterJobs/>} />
+        {/* <Route path="/dashboard" element={<Dashboard/>} /> */}
       </Routes>
     </BrowserRouter>
+
   );
 }
+
 
 export default App;

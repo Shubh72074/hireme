@@ -22,13 +22,16 @@
   text-align: center;
 }
 
-.search-box {
-  padding: 2px 0px;
-  display: flex;
-  border: 2px solid #fead9e;
-  border-radius: 12px;
+.search_wrapper {
   width: 90%;
   max-width: 40rem;
+  border: 2px solid #fead9e;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.search-box {
+  display: flex;
+  width: 100%;
   background-color: #ffffff;
 }
 
@@ -44,7 +47,6 @@
 
 
 .search-box button {
-  
   border: none;
   background: none;
   padding: 0.2rem 1rem;
@@ -62,6 +64,25 @@
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
+}
+
+#keywords_box {
+  position: relative;
+  background-color: rgb(254, 237, 231);
+  list-style: none;
+  list-style-type: none;
+}
+
+#keywords_box li {
+  padding: 8px 0px;
+  color: #a72802;
+  font-size: small;
+  width: 100%;
+}
+
+#keywords_box li:hover {
+  cursor: pointer;
+  background-color: #ffd3cc;
 }
 
 .tags-box ul li {

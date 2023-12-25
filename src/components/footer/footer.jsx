@@ -1,9 +1,9 @@
 import {
   AiOutlineInstagram,
   AiFillYoutube,
-  AiOutlineTwitter,
   AiFillLinkedin,
 } from "react-icons/ai";
+import {FaXTwitter} from 'react-icons/fa6'
 import "./footer.css";
 import { Link } from "react-router-dom";
 
@@ -13,9 +13,9 @@ const Footer = () => {
       <div className="footer-container">
         <section>
           <p>JOB TYPES</p>
-          <div><Link to={'/jobs/remote-jobs'}>Remote Jobs</Link></div>
-          <div><Link to={'/jobs/internships'}>Internships</Link></div>
-          <div><Link to={'/jobs/part-time'}>Freelancing</Link></div>
+          <div><Link to={'/jobss/remote'}>Remote Jobs</Link></div>
+          <div><Link to={'/jobss/part_time'}>Internships</Link></div>
+          <div><Link to={'/jobss/full_time'}>Freelancing</Link></div>
         </section>
         <section>
           <p>PAGES</p>
@@ -39,18 +39,19 @@ const Footer = () => {
       <div className="bottom-footer">
         <ul>
           <li>
-            <Link to={"https://instagram.com"}><AiOutlineInstagram size={'16px'} /></Link>
+            <Link to={"https://www.instagram.com/shubh72074"}><AiOutlineInstagram size={'18px'} /></Link>
           </li>
           <li>
-            <Link to={"https://youtube.com"}><AiFillYoutube size={'18px'} /></Link>
+            <Link to={"https://www.youtube.com/@shubh555"}><AiFillYoutube size={'18px'} /></Link>
           </li>
           <li>
-            <Link to={"https://linkedin.com"}><AiFillLinkedin size={'16px'} /></Link>
+            <Link to={"https://www.linkedin.com/in/shubham-nishad-7b75a0244"}><AiFillLinkedin size={'18px'} /></Link>
           </li>
           <li>
-            <Link to={"https://twitter.com"}><AiOutlineTwitter size={'16px'} /></Link>
+            <Link to={"https://x.com/shubh72074"}><FaXTwitter size={'18px'} /></Link>
           </li>
         </ul>
+        <p>Copyright &copy;2023 DevShubh. All rights reserved.</p>
       </div>
     </footer>
   );

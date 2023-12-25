@@ -7,7 +7,7 @@ import {BiEdit} from 'react-icons/bi';
 import {MdAlternateEmail} from 'react-icons/md';
 
 const Header = () => {
-  const { userData, fetchUser, logout } = useAuth();
+  const { fetchUser, logout } = useAuth();
   const [profile, setProfile] = useState(null);
   const nav = useNavigate();
 
@@ -22,11 +22,11 @@ const Header = () => {
       }
     }
     load();
-  },[userData,fetchUser]);
+  },[fetchUser]);
 
   return (
     <nav className="header">
-      <div className="logo" id="logo">
+      <div className="logo" id="logo" onClick={()=>{nav('/')}}>
         <span>
           <svg
             width="21"
@@ -96,9 +96,9 @@ const Header = () => {
       :
        <div>
         <div className="desk-header">
-          <div>
-            <a
-              href="/login"
+          <div onClick={()=> nav('/login')}>
+            <Link
+              to={"/login"}
               style={{
                 textDecoration: "none",
                 color: "inherit",
@@ -106,15 +106,15 @@ const Header = () => {
               }}
               >
               SignUp/LogIn
-            </a>
+            </Link>
           </div>
-          <div>
-            <a
-              href="/employer/post-job"
+          <div onClick={()=>nav('/employer/post-job')}>
+            <Link
+              to={"/employer/post-job"}
               style={{ textDecoration: "none", color: "inherit" }}
               >
               POST JOBS
-            </a>
+            </Link>
           </div>
         </div>
         <div className="mob-menu-btn" onClick={(e)=> {
@@ -134,10 +134,10 @@ const Header = () => {
           }}>
             <AiOutlineCloseCircle color="#990011" size={"36px"} />
           </button>
-          <button onClick={()=> {nav('/login')}}>
+          <button onClick={()=> nav('/login')}>
             LogIn / SignUp
           </button>
-          <button onClick={()=>{nav('/employer/post-job')}}>
+          <button onClick={()=>nav('/employer/post-job')}>
             Post Job
           </button>
         </div>

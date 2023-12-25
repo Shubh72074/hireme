@@ -1,0 +1,120 @@
+Folder PATH listing for volume Acer
+Volume serial number is 8498-300D
+C:.
+¦   .env
+¦   .gitignore
+¦   output.txt
+¦   package-lock.json
+¦   package.json
+¦   README.md
+¦   result.html
+¦   
++---.vscode
+¦       settings.json
+¦       
++---public
+¦       favicon.ico
+¦       index.html
+¦       logo192.png
+¦       logo512.png
+¦       manifest.json
+¦       robots.txt
+¦       
++---src
+    ¦   App.js
+    ¦   index.css
+    ¦   index.js
+    ¦   
+    +---assets
+    ¦       HIREME.svg
+    ¦       Icon.jsx
+    ¦       iicon.jpg
+    ¦       IREMEhireme.svg
+    ¦       IREMEhireme2.svg
+    ¦       LOGO.svg
+    ¦       Rectangle 1hireme.svg
+    ¦       Rectangle 1hireme2.svg
+    ¦       SVG.jsx
+    ¦       Vector 1hireme.svg
+    ¦       Vector 1hireme2.svg
+    ¦       Vector 1hireme3.svg
+    ¦       Vector 2hireme.svg
+    ¦       Vector 2hireme2.svg
+    ¦       
+    +---components
+    ¦   +---alert
+    ¦   ¦       alert.css
+    ¦   ¦       alert.jsx
+    ¦   ¦       
+    ¦   +---blogs
+    ¦   ¦       blogs.css
+    ¦   ¦       Blogs.jsx
+    ¦   ¦       
+    ¦   +---dashboard
+    ¦   ¦       dashboard.css
+    ¦   ¦       dashboard.jsx
+    ¦   ¦       
+    ¦   +---employer
+    ¦   ¦       employer.jsx
+    ¦   ¦       postjobs.css
+    ¦   ¦       postjobs.jsx
+    ¦   ¦       
+    ¦   +---filterJobs
+    ¦   ¦       filterJobs.css
+    ¦   ¦       filterJobs.jsx
+    ¦   ¦       
+    ¦   +---footer
+    ¦   ¦       footer.css
+    ¦   ¦       footer.jsx
+    ¦   ¦       
+    ¦   +---header
+    ¦   ¦       header.css
+    ¦   ¦       header.jsx
+    ¦   ¦       
+    ¦   +---job-apply
+    ¦   ¦       jobApply.css
+    ¦   ¦       jobApply.jsx
+    ¦   ¦       
+    ¦   +---jobs
+    ¦   ¦       showJobs.css
+    ¦   ¦       showJobs.jsx
+    ¦   ¦       
+    ¦   +---Loading
+    ¦   ¦       loading.css
+    ¦   ¦       loading.jsx
+    ¦   ¦       
+    ¦   +---login
+    ¦   ¦       login.css
+    ¦   ¦       Login.jsx
+    ¦   ¦       
+    ¦   +---searchjobs
+    ¦   ¦       searchBox.css
+    ¦   ¦       searchBox.jsx
+    ¦   ¦       
+    ¦   +---user
+    ¦           user.css
+    ¦           user.jsx
+    ¦           
+    +---context
+    ¦       authUser.js
+    ¦       
+    +---pages
+        +---about
+        ¦       about.jsx
+        ¦       
+        +---admin
+        ¦       admin.jsx
+        ¦       
+        +---error
+        ¦       page-not-found.jsx
+        ¦       
+        +---home
+        ¦       home.css
+        ¦       home.jsx
+        ¦       
+        +---redirect
+        ¦       redirect.jsx
+        ¦       
+        +---terms
+                terms.jsx
+                

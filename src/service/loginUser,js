@@ -1,0 +1,8 @@
+const UserLogin = {
+  nam : {
+    type: String,
+    
+  },
+  num : Number,
+
+}

@@ -4,14 +4,14 @@ import ShowJobs from "../jobs/showJobs";
 import Header from "../header/header";
 import Footer from "../footer/footer";
 
-const FilterJobs = () => {
+const TypeFilterJobs = () => {
   const params = useParams();
   const [jobs, setJobs] = useState([]);
   useEffect(()=>{
-    let category = encodeURIComponent(params.param);
-    if (category==="All%20Others") category = "";
+    let type = encodeURIComponent(params.type);
+    if (type==="All%20Others") type = "";
     const fetchJobs = async () => {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/jobs/${category}`);
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/jobss/${type}`);
       if (res.ok) {
         const jsonData = await res.json();
         setJobs(jsonData);
@@ -32,4 +32,4 @@ const FilterJobs = () => {
   )
 }
 
-export default FilterJobs;
+export default TypeFilterJobs;

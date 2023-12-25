@@ -1,0 +1,42 @@
+.load_wrapper {
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 250, 247);
+  width: 100%;
+  height: 15rem;
+}
+
+.load_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 192, 178);
+  border-radius: 2rem;
+  border: 1px solid rgb(255, 151, 96);
+  width: 164px;
+  height: 110px;
+}
+
+.circle {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  border-right: 4px solid white;
+  border-left: 4px solid white;
+  border-top: 4px solid rgb(115, 69, 41);
+  border-bottom: 4px solid rgb(194, 101, 30);
+  animation: load 1.1s linear infinite;
+}
+
+@keyframes load {
+  0% {
+    transform: rotateZ(0deg);
+  }
+
+  100% {
+    transform: rotateZ(360deg);
+  }
+
+}

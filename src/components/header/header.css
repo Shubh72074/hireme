@@ -92,6 +92,10 @@ a{
   height: 40px;
 }
 
+#logo:hover {
+  cursor: pointer;
+}
+
 .logo span:nth-child(2) svg {
   transform: translateX(-17px) translateY(1px);
 }
@@ -127,12 +131,14 @@ a{
 .desk-header div:hover {
   color: #a0444f;
   border-radius: 0.4rem;
+  cursor: pointer;
 }
 
 .desk-header div:nth-child(2):hover {
   background-color: #990011;
   color: white;
   border-radius: 6px;
+  cursor: pointer;
 }
 
 .desk-header {
@@ -184,6 +190,7 @@ a{
   border-radius: 0.8rem;
   right: 1.1rem;
   top: 4.1rem;
+  z-index: 10;
 }
 
 .drop-profile #name {

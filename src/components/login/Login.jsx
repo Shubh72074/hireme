@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authUser";
 import { useEffect, useState } from "react";
 import "./login.css";
@@ -15,21 +15,21 @@ const Login = () => {
 
   useEffect(() => {
     if (!!sessionStorage.getItem("token") && isLoggedIn) {
-      nav("/");
+      redirect("/");
     }
   }, [nav,isLoggedIn]);
-
-  const handleAlert = () => {
-    setShowAlert(true);
-    setTimeout(()=>{
-      setShowAlert(false);
-    },2000)
-  }
 
   const handleErrorEffect = (ele) => {
     ele.classList.toggle('error');
   }
 
+  const handleAlert = () => {
+    setShowAlert(true);
+    const timer =  setTimeout(()=>{
+      setShowAlert(false);
+    },5100);
+    return ()=> clearTimeout(timer);
+}
   const handleLogin = async (e) => {
     e.preventDefault();
     
@@ -41,7 +41,7 @@ const Login = () => {
       if (password.value) {
         const res = await login(email.value, password.value);
         if (res.status) {
-          nav("/");
+          nav("/user");
         } else {
           setError({
             msg: res.msg,
@@ -54,7 +54,7 @@ const Login = () => {
           msg: "PASSWORD_IS_NOT_VALID",
           type: "ERROR",
         });
-        handleAlert();
+        setShowAlert(true);
         handleErrorEffect(password);
       }
     } else {
@@ -62,7 +62,7 @@ const Login = () => {
         msg: "EMAIL_IS_NOT_VALID",
         type: "ERROR",
       });
-      handleAlert();
+      setShowAlert(true);
       handleErrorEffect(email);
     }
 
@@ -104,7 +104,7 @@ const Login = () => {
                 msg: res.msg,
                 type: "SUCCESS",
               });
-              handleAlert();
+              setShowAlert(true);
 
               if (res.status) {
                 nav('/');
@@ -114,7 +114,7 @@ const Login = () => {
                   msg: "SOMETHING_WENT_WRONG",
                   type: "ERROR",
                 });
-                handleAlert();
+                setShowAlert(true);
               }
             }
             catch (err) {
@@ -122,7 +122,7 @@ const Login = () => {
                 msg: "FILE_ERROR",
                 type: "ERROR",
               });
-              handleAlert();
+              setShowAlert(true);
             }
           
         }
@@ -131,7 +131,7 @@ const Login = () => {
             msg: "PASSWORD_IS_NOT_VALID",
             type: "ERROR",
           });
-          handleAlert();
+          setShowAlert(true);
           handleErrorEffect(reg_password);
         }
       } else {
@@ -139,7 +139,7 @@ const Login = () => {
           msg: "EMAIL_IS_NOT_VALID",
           type: "ERROR",
         });
-        handleAlert();
+        setShowAlert(true);
         handleErrorEffect(reg_email);
       }
     } else {
@@ -147,7 +147,7 @@ const Login = () => {
         msg: "NAME_IS_NOT_VALID",
         type: "ERROR",
       });
-      handleAlert();
+      setShowAlert(true);
       handleErrorEffect(reg_name);
     }
   };
@@ -166,7 +166,7 @@ const Login = () => {
           <label htmlFor="email">Email</label>
           <input type="email" id="email" />
           <label htmlFor="pass">Password</label>
-          <input type="password" id="pass" minLength={8}/>
+          <input type="password" id="pass" minLength={8} required/>
           <div>
             <button type="submit">Login</button>
             <button

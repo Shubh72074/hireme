@@ -96,6 +96,10 @@
   background: none;
 }
 
+.registerForm input:invalid {
+  color: green;
+}
+
 .registerForm input:focus {
   border: 2px solid rgb(255, 167, 135);
 }

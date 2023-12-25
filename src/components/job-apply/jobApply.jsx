@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,Link } from "react-router-dom";
 import "./jobApply.css";
 import PageNotFound from "../../pages/error/page-not-found";
 import Header from "./../header/header";
@@ -48,8 +48,8 @@ const JobApply = () => {
             <p>Domain</p>
             <p>{job.category}</p>
             <div>
-              <button>Apply</button>
-              <button>Share</button>
+              <Link to={job.url}>Apply</Link>
+              <Link to={"https://api.whatsapp.com/send?text="+job.title+" \n\n "+document.baseURI} data-action="share/whatsapp/share" target="_blank">Share</Link>
             </div>
           </div>
         </div>

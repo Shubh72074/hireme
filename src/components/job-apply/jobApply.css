@@ -2,40 +2,52 @@
 {
   display: grid;
   grid-template-columns: 2fr 1fr;
+  background-color: white;
 }
+
 .job-apply-div {
-  padding: 0px 10px; 
   display: grid;
-  gap: 6px;
+  gap: 12px;
+  padding: 12px;
+  background-color: white;
+}
+
+.job-apply-div h1,h2,h3,h4,h5,h6{
+  color: rgb(53, 53, 53);
+}
+
+.job-apply-div ul,ol {
+  font-weight: 600;
+  font-size: small;
+  color: rgb(98, 86, 77);
+  display: inline-flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.job-apply-div ul li strong,ol li strong{
+  background-color: rgb(254, 220, 188);
+  padding: 4px 10px;
+  border-radius: 12px;
 }
 
 .job-apply-div p {
-  color: black;
-  font-family: 'Poppins';
-  font-weight: 300;
-  font-size: 14px;
+  color: rgb(32, 32, 32);
+  font-weight: 400;
+  font-size: small;
 }
 
-.job-apply-div li {
-  color: rgb(37, 37, 37);
-  font-family: 'Poppins';
-  font-weight: 500;
-  font-size: medium;
+.job-apply-div a {
+  color: #06c;
+  font-style: italic;
+  text-decoration: underline;
 }
 
 .job-apply-div .h3 {
-  color: rgb(213, 19, 19);
-  font-family: 'Poppins';
-  font-weight: 500;
-  font-size: medium;
+  background-color: rgb(252, 250, 240);
+  padding: 4px 10px;
+  border-radius: 12px;
 }
 
-.job-apply-div strong {
-  color: rgb(159, 109, 0);
-  font-family: 'Poppins';
-  font-weight: 700;
-  font-size: small;
-}
 
 .company-details {
   position: sticky;
@@ -99,26 +111,25 @@
   gap: 1rem;
 }
 
-.company-details>div>button:nth-child(1) {
+.company-details>div>a:nth-child(1) {
   padding: 0.4rem 1.4rem;
-  border-radius: 2px;
+  border-radius: 4px;
   font-weight: 400;
-  transition: all 150ms ease-in-out;
-
+  transition: background-color 150ms ease-in-out;
   background-color: rgb(255, 51, 0);
   border: 1px solid rgb(255, 68, 0);
   color: white;
 }
-.company-details>div>button:nth-child(2) {
+.company-details>div>a:nth-child(2) {
   padding: 0.4rem 1.4rem;
   background-color: rgb(255, 255, 255);
   border: 1px solid rgb(95, 95, 95);
   color: rgb(49, 49, 49);
-  border-radius: 2px;
+  border-radius: 4px;
   font-weight: 400;
 }
 
-.company-details>div>button:nth-child(1):hover {
+.company-details>div>a:nth-child(1):hover {
   background-color: rgb(255, 239, 235);
   border: 1px solid rgb(255, 157, 122);
   color: rgb(49, 49, 49);

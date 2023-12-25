@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext } from "react";
 
 
 const AuthContext = createContext();
@@ -9,8 +9,7 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  let isLoggedIn = false;
   const login =  async (email, password) => {
     const res = await fetch(`${process.env.REACT_APP_API_URL}/login`, {
       method: 'POST',
@@ -20,12 +19,11 @@ export function AuthProvider({ children }) {
       body: JSON.stringify({email : email, password : password}),
     });
 
+
     if (res.ok) {
       const user = await res.json();
 
       sessionStorage.setItem("token",user.token);
-
-      setIsLoggedIn(true);
 
       const data = {
         status: true,
@@ -57,7 +55,6 @@ export function AuthProvider({ children }) {
     if (res.ok) {
       const user = await res.json();
       sessionStorage.setItem("token",user.token);
-      setIsLoggedIn(true);
       return {
         status : res.ok,
         msg: res.statusText,
@@ -79,11 +76,10 @@ export function AuthProvider({ children }) {
     });
     if (res.ok) {
       const dt = await res.json();
-      setIsLoggedIn(true);
       return dt;
     }
     else {
-      setIsLoggedIn(false);
+      sessionStorage.clear();
       return false;
     }
   }
@@ -94,12 +90,19 @@ export function AuthProvider({ children }) {
     window.location.reload();
   };
 
+  setInterval( async()=>{
+    if(!!sessionStorage.getItem("token")) {
+      const LoggedIn = await fetchUser(sessionStorage.getItem("token"));
+      isLoggedIn = !!LoggedIn;
+    }
+  },5000);
+
   const value = {
-    isLoggedIn,
     register,
     fetchUser,
     login,
     logout,
+    isLoggedIn
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

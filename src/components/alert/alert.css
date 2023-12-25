@@ -1,35 +1,36 @@
-.alertBox {
+.alert_wrapper {
   position: absolute;
-  top: 1rem;
-  left: 30%;
-  font-weight: 400;
-  font-size: small;
-  padding: 2px 8px;
-  border-radius: 4px;
-  border: 1px solid rgb(255, 0, 0);
-  background-color: rgba(255, 0, 0, 0.084);
-  color:rgb(255, 0, 0);
-  transition: all 300ms ease-in-out;
-  animation: show 300ms;  
+  z-index: 100;
+  top: 2rem;
+  display: flex;
+  justify-content: center;
 }
 
-@keyframes show {
+.alert_content {
+  position: relative;
+  background-color: rgb(86, 67, 44);
+  color: white;
+  width: 250px;
+  padding: 2px;
+  border-bottom: 0.3rem solid grey;
+  text-align: center;
+}
+
+.alert_content::after {
+  content: "";
+  position: absolute;
+  background-color: black;
+  bottom: -0.3rem;
+  left: 0px;
+  height: 0.3rem;
+  animation: progress 5s linear;
+}
+
+@keyframes progress {
   0% {
-    transform: translateY(-100%);
+    width: 0px;
   }
   100% {
-    transform: translateY(0);
+    width: 100%;
   }
-}
-
-.alertBox div {
-  display: flex;
-  align-items: center;
-}
-
-.alertBox div span {
-  margin-top: 4px;
-}
-.alertBox div p {
-  margin-left: 8px;
 }

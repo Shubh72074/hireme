@@ -1,0 +1,220 @@
+._pjw {
+  background-color: rgb(255, 250, 245);
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+._pjp h1,h2,h3,h4,h5,h6{
+  color: rgb(53, 53, 53);
+}
+
+._pjp ul,ol {
+  font-weight: 600;
+  font-size: small;
+  color: rgb(98, 86, 77);
+  display: inline-flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+._pjp p {
+  color: rgb(32, 32, 32);
+  font-weight: 400;
+  font-size: small;
+}
+
+._pjp a {
+  color: #06c;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+._pjp ul li strong,ol li strong{
+  background-color: rgb(254, 220, 188);
+  border-radius: 12px;
+}
+
+._pjd>div {
+  margin: 1.6rem 0;
+}
+
+._pjd div>label {
+
+  border-left: 4px solid rgb(224, 178, 138);
+  border-radius: 2px;
+  padding: 6px 10px;
+  display: block;
+  font-size: small;
+  width:fit-content;
+  background-color: rgb(255, 227, 199);
+  color: rgb(162, 108, 60);
+}
+
+#tags_wrapper {
+  border: 1px solid rgba(255, 64, 21, 0.26);
+  margin-top: 8px;
+  border-radius: 2px;
+  background-color: white;
+  /* max-width: 390px; */
+}
+
+#i_wrapper {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  
+}
+
+#_jtags {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+#_jtags label {
+  width: fit-content;
+  padding-left: 1rem;
+  padding-right: 0;
+  background-color: rgb(255, 227, 199);
+  color: rgb(162, 108, 60);
+  margin: 0.5rem;
+  border: none;
+  border-radius: 2rem;
+}
+
+#_jtags label span {
+  margin-left: 10px;
+  right: 0;
+  border-radius: 50%;
+  padding: 6px 10px;
+  font-size: small;
+  font-weight: 600;
+  background-color: rgb(253, 177, 132);
+  color: rgba(227, 84, 23, 0.94);
+}
+
+#_jtags label span:hover {
+  cursor: pointer;
+}
+
+#tags_wrapper button {
+  border: none;
+  border-radius: 2px;
+  padding: 6px 10px;
+  display: block;
+  font-size: small;
+  min-width: 4rem;
+  
+  background-color: rgb(202, 101, 0);
+  color: rgb(255, 254, 252);
+}
+
+#tags_wrapper input[type="text"] {
+  width: 100%;
+  margin: 0;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid rgba(255, 64, 21, 0.26);
+}
+
+._pjd div input {
+  width: 100%;
+  outline: none;
+  border: 1px solid rgba(255, 64, 21, 0.26);
+  padding: 8px 12px;
+  margin-top: 8px;
+  border-radius: 2px;
+}
+
+._pjd div select {
+  /* width: 100%; */
+  display: block;
+  border: 1px solid rgba(189, 88, 0, 0.472);
+  padding: 6px 10px;
+  margin-top: 8px;
+  border-radius: 2px;
+  background-color: rgb(255, 240, 226);
+  outline: none;
+  color: rgb(151, 71, 1);
+}
+
+._pjd div input:focus {
+  outline: 1px solid rgba(255, 139, 85, 0.507);
+}
+
+._pjd input[type="submit"] {
+  background-color: rgb(31, 31, 31);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+  letter-spacing: 1px;
+  /* max-width: 390px; */
+  width: 100%;
+}
+
+.doc-container>label {
+  margin-bottom: 0.5rem;
+}
+
+.quill {
+  background-color: rgba(255, 255, 255, 0.945);
+  min-width: 240px;
+  /* max-width: 390px; */
+  min-height: 340px;
+  max-height: 480px;
+  border:2px solid rgb(224, 178, 138);
+  border-radius: 12px;
+  overflow: scroll;
+  box-shadow: 1px 2px 4px rgba(249, 210, 173, 0.607);
+}
+
+.ql-snow .ql-picker-label::before
+{
+  display: block !important;
+  line-height: 14px !important;
+}
+
+.ql-toolbar.ql-snow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: justify !important;
+  gap: 8px;
+}
+
+.ql-toolbar.ql-snow .ql-formats {
+  margin: 0 !important;
+}
+
+.ql-container {
+  border:  none !important;
+}
+
+.ql-toolbar {
+  border: none !important;
+  border-bottom: 2px solid rgba(204, 95, 0, 0.288) !important;
+}
+
+.ql-toolbar span{
+  color: rgba(17, 17, 17, 0.757) !important;
+  background-color: rgb(253, 236, 193);
+  border-radius: 12px !important;
+  padding: 2px 4px !important;
+}
+
+.ql-toolbar button {
+  height: 24px !important;
+  width: 24px !important;
+}
+
+.ql-toolbar button.ql-active
+{
+  background-color: rgb(238, 159, 22) !important;
+  border-radius: 12px !important;
+}
+.ql-picker-item {
+  background-color: white !important;
+}
+
+
