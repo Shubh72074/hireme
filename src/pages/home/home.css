@@ -1,72 +1,15 @@
-/* .main-container {
+.home-bg {
+  background-color: #f8f1f1;
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-} */
-
-.call_action {
-  position: sticky;
-  top: 15px;
-  margin-top: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 95%;
-  max-width: 480px;
-  height: fit-content;
-  background-color: rgba(255, 231, 216, 0.879);
-  border-radius: 17px;
-  gap: 9px;
   justify-content: center;
-  padding: 12px;
+  min-width: 1280px;
 }
 
-.call_action p {
-  margin-bottom: 10px;
-  font-weight: 300;
-  text-align:center;
-  font-size: small;
-  padding: 0 10px;
-  color: rgba(134, 36, 8, 0.992);
-}
-
-.call_action button:nth-child(1) {
-  width: fit-content;
-}
-
-.call_action button {
-  position: relative;
-  bottom: 8px;
-  width: 100%;
-  background-color: rgba(163, 37, 2, 0.546);
-  color: #ffffff;
-  padding: 10px;
-  border: none;
-  border-radius: 1rem;
-  font-weight: 600;
-  letter-spacing: 1.2px;
-  font-family: "POPPINS";
-}
-
-.call_action input {
-  position: relative;
-  bottom: 10px;
-  width: 100%;
-  color: #864805cb;
-  padding: 10px;
-  text-align: center;
-  border: none;
-  border-radius: 1rem;
-  font-weight: 600;
-  letter-spacing: 1.2px;
-  font-family: "POPPINS";
-}
-
-@media screen and (max-width:640px) {
-  .call_action {
-    display: none;
-  }
-  .main-container {
-    display: block;
-  }
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
 }

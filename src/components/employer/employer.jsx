@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate, NavLink } from "react-router-dom";
+import { Routes, Route, NavLink, Navigate, Outlet } from "react-router-dom";
 import { HiOutlineDocumentText } from "react-icons/hi2";
 import { BsChatLeft, BsGear } from "react-icons/bs";
 import { BiUser } from "react-icons/bi";
@@ -9,27 +9,17 @@ import { useAuth } from "../../context/authUser";
 import { useEffect, useState } from "react";
 import "./employer.css";
 import PostJobForm from "./postform";
+import axios from "axios";
 const Employer = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [user, setUser] = useState({});
   const [showPostJob, setShowPostJob] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
-  const { logout, fetchUser } = useAuth();
-  const para = {
-    showPostJob,
-    setShowPostJob
-  }
-  useEffect(() => {
-    const getUser = async () => {
-      if (!!sessionStorage.getItem("token")) {
-        const data = await fetchUser(sessionStorage.getItem("token"));
-        data ? setUser(data) : navigate("/login");
-      } else {
-        navigate("/");
-      }
-    };
-    getUser();
-  }, [navigate, fetchUser]);
+  const { logout, role, token } = useAuth();
+
+  useEffect(()=>{
+    axios.get(`${process.env.REACT_APP_API_URL}/${role}?token?=${token}`).then(user => setUser(user.data)).catch(err => console.log(err));
+  },[token, role])
   return (
     <>
       {showPostJob ? <PostJobForm setShowPostJob={setShowPostJob} /> : <></>}
@@ -138,11 +128,7 @@ const Employer = () => {
           </NavLink>
         </div>
         <div className="employer_content">
-          <Routes>
-            <Route path="dashboard" element={<>Employer Dashboard</>} />
-            <Route path="applicants" element={<>Applicants</>} />
-            <Route path="messages" element={<>Messages & Chats</>} />
-          </Routes>
+          <Outlet/>
         </div>
       </div>
     </>

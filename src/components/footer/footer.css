@@ -1,86 +1,173 @@
+footer {
+  width: 100%;
+}
+
 .footer-container {
   display: flex;
-  flex-wrap: wrap;
-  background-color: #402619;
-  padding: 3rem 1rem;
   justify-content: space-between;
+  align-items: flex-start;
+  padding: 2rem 0;
   gap: 2rem;
+  background-color: #f8f1f1;
 }
 
-.footer-container section {
+.connect-with-us {
   display: flex;
   flex-direction: column;
+  align-items: left;
+  
+  text-align: center;
+  width: max-content;
+  text-align: left;
+}
+
+.connect-with-us #logo {
+  font-family: Pacifico;
+  margin-left: 0;
+  margin-bottom: 1rem;
+}
+
+.connect-with-us p {
+  color: #990011;
+  font-weight: 400;
+  font-size: 0.7rem;
+}
+
+.social-links {
+  display: flex;
   gap: 1rem;
+  margin-top: 1rem;
+  list-style: none;
+  justify-content: flex-start;
+  padding: 0;
 }
 
-.footer-container section div a {
-  margin-top: 0.2rem;
-  border: 1px solid rgba(202, 103, 22, 0.469);
-  border-radius: 1rem;
-  padding: 0.4rem 0.8rem;
-  font-size: small;
-  font-weight: 300;
-  color: rgba(255, 248, 244, 0.891);
-}
-
-.footer-container section div a:hover {
-  background-color: rgb(85, 30, 7);
-  cursor: pointer;
-}
-
-
-.bottom-footer {
-  padding: 2rem;
+.social-links li a {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
   justify-content: center;
   align-items: center;
-  background-color: rgb(44, 24, 0);
-  margin-left: -2rem;
+  border-radius: 50%;
+  padding: 0.5rem;
+  background-color: #ff6060;
+  box-shadow: 0 -1px 1px rgba(255, 209, 183, 0.543);
+  color: #ffffff;
 }
 
-.bottom-footer p {
-  color: rgba(255, 255, 255, 0.78);
-  font-size: x-small;
-}
-
-.bottom-footer ul {
-  list-style: none;
+.bottom-footer {
   display: flex;
-  gap: 16px;
-  color: white;
+  justify-content: right;
   align-items: center;
-  margin-left: -2.2rem;
-}
-
-.bottom-footer ul li {
-  display: flex;
-  align-items: center;
-  padding: 8px 10px;
-  background-color:rgb(39, 20, 0);
-  border-radius: 4px;
-}
-
-.bottom-footer ul li a {
-  width: 18px;
-  height: 18px;
-}
-
-.bottom-footer ul li:hover {
-  color: rgb(251, 227, 218);
-}
-
-.footer-container section p {
-  border-radius: 6px;
-  background-color: rgb(91, 46, 0);
-  padding: 0.2rem 0.5rem;
-  width: fit-content;
-  color: rgba(255, 255, 255, 0.812);
+  gap: 1rem;
+  padding: 1rem 0;
+  background-color: #f8f1f1;
+  color: #990011;
   font-weight: 400;
-  border-bottom: 2.5px solid rgba(255, 239, 222, 0.174);
-  border-right: 2px solid rgba(255, 237, 216, 0.201);
   font-size: small;
-  transform: skewX(-8deg);
-  box-shadow: 2px 1px 2px rgba(41, 16, 0, 0.475);
+  border-top: 2px solid #d30202;
+  margin-bottom: 1rem;
+}
+.page-link-wrapper {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.page-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0;
+  gap: 1rem;
+  list-style: none;
+  text-align: left;
+}
+
+.page-links li a {
+  text-decoration: none;
+  color: #990011;
+  font-weight: 400;
+  font-size: small;
+}
+
+.support-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 1rem 0.25rem ;
+  list-style: none;
+  border: 1px solid #ffcece;
+  border-radius: 1.75rem;
+  background-color: #fffcfc;
+}
+
+.support-links p {
+  color: #990011;
+  margin-bottom: 0.15rem;
+}
+
+.support-links-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 0;
+  text-align: left;
+}
+
+.email-us {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.75rem;
+  text-align: left;
+  font-size: small;
+}
+
+
+.whatsapp-btn svg {
+  margin-left: -0.25rem;
+}
+
+.whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  color: #c1081e;
+  font-weight: 400;
+  font-size: x-small;
+  background-color: #ff6060;
+  color: #ffffff;
+  padding: 0.2rem 0.75rem;
+  border-radius: 1.5rem;
+  border: none;
+  cursor: pointer;
+  text-wrap: nowrap;
+}
+
+.email-us a:nth-child(1):hover {
+  text-decoration: underline;
+}
+
+.call-us {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  gap: 0.75rem;
+  text-align: left;
+  font-size: small;
+  
+}
+
+.call-us a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  color: #c1081e;
+  font-weight: 400;
+  width: 100%;
 }

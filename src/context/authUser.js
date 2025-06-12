@@ -1,109 +1,45 @@
-import React, { createContext, useContext } from "react";
-
+import { createContext, useContext, useEffect, useState } from "react";
+const jwt_decode = require("jwt-decode");
 
 const AuthContext = createContext();
 
-export function useAuth() {
-  return useContext(AuthContext);
-}
+export const AuthProvider = ({ children }) => {
+  const [token, setToken] = useState(null); // JWT token
+  const [role, setRole] = useState(null); // JWT token
 
-export function AuthProvider({ children }) {
-
-  let isLoggedIn = false;
-  const login =  async (email, password) => {
-    const res = await fetch(`${process.env.REACT_APP_API_URL}/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type' : 'application/json',
-      },
-      body: JSON.stringify({email : email, password : password}),
-    });
-
-
-    if (res.ok) {
-      const user = await res.json();
-
-      sessionStorage.setItem("token",user.token);
-
-      const data = {
-        status: true,
-        user,
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decoded = jwt_decode.jwtDecode(token);
+      if (decoded.exp * 1000 < Date.now()) {
+        console.log(`token expired, loggin out`);
+        logout();
+      } else {
+        setToken(token);
+        setRole(decoded.role);
       }
-      return data;
     }
-    else {
-      const er = await res.text()
-      const data = {
-        status: false,
-        msg : er
-      }
-      return data;
-    }
+  }, []);
+
+  const login = (token) => {
+    setToken(token);
+    const decoded = jwt_decode.jwtDecode(token);
+    setRole(decoded.role);
+    localStorage.setItem("token", token);
   };
-
-  const register =  async (formData) => {
-    console.log("in reg");
-    console.log(formData);
-    const res = await fetch(`${process.env.REACT_APP_API_URL}/register`, {
-      method: 'POST',
-      headers: {
-        'Content-Type' : 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
-
-    if (res.ok) {
-      const user = await res.json();
-      sessionStorage.setItem("token",user.token);
-      return {
-        status : res.ok,
-        msg: res.statusText,
-      };
-    }
-    else {
-      console.log("error");
-      return false;
-    }
-  };
-
-  const fetchUser = async (token) => {
-    const res = await fetch(`${process.env.REACT_APP_API_URL}/user`,{
-      method: 'POST',
-      headers: {
-        'Content-Type' : 'application/json',
-      },
-      body: JSON.stringify({token:token}),
-    });
-    if (res.ok) {
-      const dt = await res.json();
-      return dt;
-    }
-    else {
-      sessionStorage.clear();
-      return false;
-    }
-  }
 
   const logout = () => {
-    const r = sessionStorage.removeItem("token");
-    console.log(r);
+    setToken(null);
+    setRole(null);
+    localStorage.removeItem("token");
     window.location.reload();
   };
 
-  setInterval( async()=>{
-    if(!!sessionStorage.getItem("token")) {
-      const LoggedIn = await fetchUser(sessionStorage.getItem("token"));
-      isLoggedIn = !!LoggedIn;
-    }
-  },5000);
+  return (
+    <AuthContext.Provider value={{ token, login, logout, role }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
 
-  const value = {
-    register,
-    fetchUser,
-    login,
-    logout,
-    isLoggedIn
-  };
-
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
-}
+export const useAuth = () => useContext(AuthContext);

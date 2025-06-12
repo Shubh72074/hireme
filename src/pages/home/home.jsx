@@ -1,15 +1,17 @@
 import "./home.css";
 import Header from "../../components/header/header";
-import SearchBox from "../../components/searchjobs/searchBox";
 import Footer from "../../components/footer/footer";
+import SearchBox from "../../components/searchjobs/searchBox";
 
 const Home = () => {
   return (
-    <>
-    <Header/>
-    <SearchBox/>
-    <Footer/>
-    </>
+    <div className="home-bg">
+      <div className="home">
+        <Header/>
+        <SearchBox/>
+        <Footer/>
+      </div>
+    </div>
   )
 }
 

@@ -3,39 +3,58 @@ import Home from "./pages/home/home";
 import Terms from "./pages/terms/terms";
 import About from "./pages/about/about";
 import PageNotFound from "./pages/error/page-not-found";
-import Blogs from "./components/blogs/Blogs";
 import Login from "./components/login/Login";
 import User from "./components/user/user.jsx";
-import UserProfile from "./components/user/userprofile/userprofile";
-import UserSettings from "./components/user/usersettings/usersettings";
+import UDashboard from "./components/user/udashboard.jsx";
+import UJobs from "./components/user/ujobs.jsx";
+import UAppliedJobs from "./components/user/uappliedjobs.jsx";
+import UMessages from "./components/user/umessages.jsx";
+import EmployerLogin from "./components/employer/employerlogin.jsx";
 import Employer from "./components/employer/employer";
 import ShowJobs from "./components/jobs/showJobs.jsx";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { EmployerPrivateRoutes, UserPrivateRoutes } from "./utils/privateRoutes";
+import ChatBox from "./components/chat/ChatBox.jsx";
+import Applicants from "./components/employer/applicants/applicants.jsx";
+import Messages from "./components/employer/messages/message.jsx";
+import EmpDashboard from "./components/employer/dashboard/empDashboard.jsx";
 import JobApply from "./components/job-apply/jobApply.jsx";
-import FilterJobs from "./components/filterJobs/filterJobs.jsx";
-import TypeFilterJobs from "./components/TypeFilter/TypeFilterJobs.jsx";
 // import Dashboard from "./components/dashboard/dashboard.jsx";
 
 function App() {
-  const isLoggedIn = !!sessionStorage.getItem("token");
   return (
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/terms-and-policy/*" element={<Terms />} />
-        <Route path="/about/*" element={<About />} />
-        <Route path="/login/*" element={isLoggedIn ? <Navigate to="/user" replace /> : <Login />}/>
-        <Route path="/user/*" element={<User />} />
-        <Route path="/user/profile/*" element={<UserProfile />} />
-        <Route path="/user/settings/*" element={<UserSettings />} />
-        <Route path="/employer/*" element={<Employer />} />
-        <Route path="/blogs/:id" element={<Blogs />} />
+        <Route path="/terms-and-policy" element={<Terms />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/user" element={<UserPrivateRoutes Component={<User/>}/>} >
+          <Route index element={<UDashboard/>}/>
+          <Route path="dashboard" element={<UDashboard/>}/>
+          <Route path="jobs" element={<UJobs/>} />
+          <Route path="applied-jobs" element={<UAppliedJobs/>} />
+          <Route path="messages" element={<UMessages/>} >
+            <Route path="chat" element={<ChatBox/>}/>
+          </Route>
+        </Route>
+        <Route path="/user/login" element={<Login page="login" />} />
+        <Route path="/user/register" element={<Login page="register" />} />
+        <Route path="/employer" element={<EmployerPrivateRoutes Children={<Employer/>}/>} >
+          <Route index element={<EmpDashboard/>}/>
+          <Route path="dashboard" element={<EmpDashboard/>}/>
+          <Route path="applicants" element={<Applicants/>}/>
+          <Route path="messages" element={<Messages/>}>
+            <Route path="chat" element={<ChatBox/>}/>
+          </Route>
+        </Route>
+        <Route path="/employer/login" element={<EmployerLogin page="login" />} />
+        <Route path="/employer/register" element={<EmployerLogin page="register" />} />
         <Route path="*" element={<PageNotFound />} />
         <Route path="/jobs" element={<ShowJobs/>} />
-        <Route path="/job/:jobid" element={<JobApply/>} />
-        <Route path="/jobs/:param" element={<FilterJobs/>} />
-        <Route path="/jobss/:type" element={<TypeFilterJobs/>} />
-        {/* <Route path="/dashboard" element={<Dashboard/>} /> */}
+        <Route path="/apply/:jobid" element={<JobApply/>} />
       </Routes>
+      <ToastContainer/>
     </BrowserRouter>
 
   );

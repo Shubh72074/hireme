@@ -1,168 +1,209 @@
-.form {
+.login_container {
   display: flex;
-  height: 100dvh;
+  width: 100%;
+
+  max-width: 1200px;
+  justify-content: center;
+  
+  margin: 0 auto;
+  padding: 2.5rem;
+}
+
+.login_page {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #f5f5f5;
+}
+
+.login_logo{
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(253, 253, 238);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem 5rem;
+  border-radius: 12px;
+  box-shadow: 0px 0px 1px rgba(252, 203, 97, 0.53);
+  z-index: 10;
+  margin-right: -1rem;
+}
+
+.login_logo img{
+  width: 212px;
+  height: 212px;
+  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+}
+
+.benefit_bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.benefit_bullets li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 14px;
+  font-size: x-small;
+  border: 1px solid rgba(0, 183, 153, 0.56);
+  padding: 0.3rem 0.4rem;
+  border-radius: 1.25rem;
+}
+
+.benefit_bullets li:nth-child(odd) {
+  background-color: rgba(0, 183, 153, 0.1);
+  transform: translateX(50px);
+  transition: all 0.2s ease-in-out;
+}
+.benefit_bullets li:nth-child(even) {
+  transform: translateX(-50px);
+  background-color: rgba(0, 183, 153, 0.2);
+}
+
+.benefit_bullets li svg{
+  background-color: rgb(0, 128, 105);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  padding: 4px;
+}
+
+.login_container .form_wrapper {
+  display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(255, 253, 251);
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  min-height: 100%;
+  max-height: max-content;
+  overflow-y: scroll;
+  /* border-radius: 6px;
+  padding: 4rem;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1); */
 }
 
-.loginForm {
+.form_wrapper .login_form, .register_form{
   display: flex;
   flex-direction: column;
-  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  min-width: 500px;
+  height: 100vh;
   padding: 2rem;
-  background-color: rgb(255, 255, 255);
-  border-radius: 28px;
-  gap: 1.5rem;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.24);
-  border: 1px solid rgba(210, 9, 9, 0.227);
 }
 
-.loginForm label {
-  font-weight: 400;
-  font-size: medium;
-  margin-left: 2px;
-  color: rgb(255, 113, 61);
-}
-
-.loginForm input {
-  margin-top: -12px;
-  padding: 10px 24px;
-  font-size: small;
-  font-weight: 300;
-  border: 2px solid rgb(255, 208, 191);
-  border-radius: 12px;
-  outline: none;
-  background: none;
-}
-
-.loginForm input:focus {
-  border: 2px solid rgb(255, 167, 135);
-}
-
-.loginForm div {
-  display: flex;
-  gap: 1rem;
-}
-
-.loginForm div button {
-  padding: 10px 24px;
-  font-size: medium;
-  font-weight: 300;
-  border-radius: 12px;
-}
-
-.loginForm div button:nth-child(1) {
-  background-color: orangered;
-  border: 1px solid rgb(255, 68, 0);
-  color: white;
-  flex: 2;
-}
-
-.loginForm div button:nth-child(2) {
-  background-color: rgb(255, 248, 245);
-  border: 1px solid rgba(255, 68, 0, 0.356);
-  color: rgb(255, 25, 0);
-  flex: 1;
-}
-
-.registerForm {
+.form_wrapper .login_form form, .register_form form {
   display: flex;
   flex-direction: column;
-  width: fit-content;
-  padding: 2rem;
-  background-color: rgb(255, 255, 255);
-  border-radius: 28px;
+  justify-content: center;
   gap: 1.5rem;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.24);
-  border: 1px solid rgba(210, 9, 9, 0.227);
+  width: 100%;
+  background-color: rgb(255, 255, 255);
 }
 
-.registerForm label {
-  font-weight: 400;
-  font-size: medium;
-  margin-left: 2px;
-  color: rgb(255, 113, 61);
-}
-
-.registerForm input {
-  margin-top: -12px;
-  padding: 10px 24px;
-  font-size: small;
-  font-weight: 300;
-  border: 2px solid rgb(255, 208, 191);
-  border-radius: 12px;
+.form_wrapper .login_form form input, .register_form form input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 40px;
+  border: 0.1px solid rgb(201, 201, 201);
   outline: none;
-  background: none;
-}
-
-.registerForm input:invalid {
-  color: green;
-}
-
-.registerForm input:focus {
-  border: 2px solid rgb(255, 167, 135);
-}
-
-.registerForm div {
-  display: flex;
-  gap: 1rem;
-}
-
-.registerForm div button {
-  padding: 10px 24px;
   font-size: medium;
-  font-weight: 300;
-  border-radius: 12px;
+  font-size: small;
+  color: rgb(148, 74, 24);
 }
 
-.registerForm div button:nth-child(1) {
-  background-color: orangered;
-  border: 1px solid rgb(255, 68, 0);
-  color: white;
-  flex: 2;
+.form_wrapper form > div > p {
+  display: none;
+  color: rgb(255, 0, 0);
+  font-size: small;
+}
+.form_wrapper form input:invalid ~ p {
+  display: block;
 }
 
-.registerForm div button:nth-child(2) {
-  background-color: rgb(255, 248, 245);
-  border: 1px solid rgba(255, 68, 0, 0.356);
-  color: rgb(255, 25, 0);
-  flex: 1;
+.form_wrapper .login_form form input[type="email"]:invalid, .register_form form input[type="email"]:invalid {
+  border: 1px solid rgb(255, 0, 0);
+}
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+.form_wrapper .login_form form button, .register_form form button {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 40px;
+  border: 0.5px solid rgb(233, 147, 34);
+  background-color: rgb(254, 250, 248);
+  color: rgb(189, 124, 38);
+  font-size: large;
+  margin-bottom: 1rem;
 }
 
 
 
-input#email.error {
-  animation: 200ms shake;
+.form_wrapper .login_form form button:hover, .register_form form button:hover {
+  background-color: rgb(252, 243, 238);
 }
 
-input#pass.error {
-  animation: 200ms shake;
+.form_wrapper .login_form h1, .register_form h1 {
+  color: rgb(180, 67, 1);
+  margin-bottom: 1rem;
 }
 
-input#rpass.error {
-  animation: 200ms shake;
+.login_form .login_form > p, .register_form > p {
+  text-wrap: nowrap;
+  text-align: center;
 }
 
-input#remail.error {
-  animation: 200ms shake;
+.form_wrapper .login_form input[type="checkbox"] {
+  position: relative;
+}
+.form_wrapper .login_form input[type="checkbox"] + label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 40px;
+  border: 1px solid rgb(201, 201, 201);
 }
 
-input#rname.error {
-  animation: 200ms shake;
+
+.form_wrapper .register_form label[for="exp"] .checkCircle, .register_form label[for="fresher"] .checkCircle {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  top: 4px;
+  right: 4px;
+  width: 20px;
+  height: 20px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  border: 1px solid rgb(201, 201, 201);
 }
 
-@keyframes shake {
-  0% {
-    transform: translateX(-5%);
-  }
-  30% {
-    transform: translateX(5%);
-  }
-  60% {
-    transform: translateX(-5%);
-  }
-  100% {
-    transform: translateX(5%);
-  }
+.form_wrapper .register_form label[for="exp"] , .register_form label[for="fresher"] {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  border: 1px solid lightgray;
 }
+
+
+input[type="radio"]:checked + label {
+  color: rgb(0, 96, 121);
+  font-weight: bold;
+  border: 1px solid rgb(123, 180, 255);
+  background-color: rgb(207, 238, 255);
+}
+

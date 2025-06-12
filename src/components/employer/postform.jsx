@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { FaCalendar } from "react-icons/fa";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 function PostJobForm(props) {
   const [documentContent, setDocumentContent] = useState("");
@@ -32,45 +34,34 @@ function PostJobForm(props) {
     setJoiningDate(date);
     setShowCalendar(prev=>!prev);
   }
-  const handleSubmit = () => {
-    console.log(formData);
+  const handleSubmit = (e) => {
+    const formData = new FormData(e.target);
+    axios.post(`${process.env.REACT_APP_API_URL}/job`, formData).then(res => {
+          toast.success(res.data.message, {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        });
   }
   return (
     <div className="postJob_wrapper">
-      <div className="postJobForm">
+      <form className="postJobForm" onSubmit={handleSubmit} method="POST" encType="multipart/form-data">
         <div>
-          <label htmlFor="job_title">Job Title*</label>
-          <select name="job_title" id="job_title" onChange={(e)=>{
-            setFormData({
-              "jobTitle" : e.target.selectedOptions[0].value
-            })
-          }}>
-            <option value="Backend Developer">Backend Developer</option>
-            <option value="Big Data Engineer">Big Data Engineer</option>
-            <option value="Blockchain Developer">Blockchain Developer</option>
-            <option value="Cloud Engineer">Cloud Engineer</option>
-            <option value="Data Analyst">Data Analyst</option>
-            <option value="Data Engineer">Data Engineer</option>
-            <option value="Data Science">Data Science</option>
-            <option value="DevOps Engineer">DevOps Engineer</option>
-            <option value="Frontend Developer">Frontend Developer</option>
-            <option value="Fullstack Developer">Fullstack Developer</option>
-            <option value="Game Developer">Game Developer</option>
-            <option value="MLOps Developer">MLOps Developer</option>
-            <option value="Mobile App Developer">Mobile App Developer</option>
-            <option value="Wordpress Developer">Wordpress Developer</option>
-            <option value="Software Developer">Software Developer</option>
-            <option value="UI/UX Designer">UI/UX Designer</option>
-            <option value="Testing Engineer">Testing Engineer</option>
-          </select>
+          <label htmlFor="job_title">Job Title<span style={{color:"red"}}>*</span></label>
+          <input type="text" name="job_title" id="jobtitle" placeholder="Not more than 40 characters" minLength={5} maxLength={40} required/>
         </div>
         <div>
-          <label htmlFor="r_skills">Required Skills*</label>
+          <label htmlFor="r_skills">Preferred Skills<span style={{color:"red"}}>*</span></label>
           <input type="text" name="r_skills" id="r_skills" />
           <div className="skills_box"></div>
         </div>
         <div>
-          <label>Salary Range*</label>
+          <label>Salary Range<span style={{color:"red"}}>*</span></label>
           <input
             type="number"
             id="sr_l"
@@ -98,7 +89,7 @@ function PostJobForm(props) {
           <span>LPA</span>
         </div>
         <div>
-          <label htmlFor="job_desc">Job Description*</label>
+          <label htmlFor="job_desc">Job Description<span style={{color:"red"}}>*</span></label>
           <ReactQuill
             id="_jdesc"
             value={documentContent}
@@ -126,7 +117,7 @@ function PostJobForm(props) {
           />
         </div>
         <div>
-          <label htmlFor="_jtype">Job Type*</label>
+          <label htmlFor="_jtype">Job Type<span style={{color:"red"}}>*</span></label>
           <select name="_jtype" id="_jtype">
             <option value="office">In-Office</option>
             <option value="remote">In-Office</option>
@@ -134,22 +125,27 @@ function PostJobForm(props) {
           </select>
         </div>
         <div>
-          <label htmlFor="joining_date">Preferred Joining Data*</label>
+          <label htmlFor="joining_date">Last Date <span style={{color:"red"}}>*</span></label>
           <input type="text" name="joining_date" id="joining_date" value={joiningDate.toLocaleDateString()} readOnly />
           <span id="calendar_lg" onClick={()=>{setShowCalendar((prev)=>!prev)}}><FaCalendar size={"24px"}/></span>
           {showCalendar && <Calendar onChange={setDate} value={joiningDate} minDate={new Date()} />}
         </div>
         <div>
-          <label htmlFor="w_xp">Work Experience*</label>
+          <label htmlFor="w_xp">Work Experience<span style={{color:"red"}}>*</span></label>
           <select name="w_xp" id="w_xp">
             <option value="1">0-3 years</option>
             <option value="2">3+ years</option>
           </select>
         </div>
         <div>
-          <label htmlFor="openings">No. Of Openings*</label>
-          <input type="number" name="openings" id="openings" min={1} />
+          <label htmlFor="openings">No. Of Openings<span style={{color:"red"}}>*</span></label>
+          <input type="number" name="openings" id="openings" min={1} value={1} />
+
+          <label htmlFor="location">Location<span style={{color:"red"}}>*</span></label>
+          <input type="text" name="location" id="location" minLength={1} placeholder="City" required/>
         </div>
+
+
         <div>
           <label htmlFor="benefits">Added Benefits</label>
           <div>
@@ -176,10 +172,10 @@ function PostJobForm(props) {
               props.setShowPostJob(prev=>!prev);
               // console.log(setShowPostJob);
             }}>Cancle</button>
-            <button type="submit" onClick={handleSubmit}>Submit</button>
+            <button type="submit">Submit</button>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 }

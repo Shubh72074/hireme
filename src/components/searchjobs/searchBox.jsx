@@ -1,122 +1,91 @@
-import { AiOutlineClose, AiOutlineSearch } from "react-icons/ai";
+import {React, useEffect, useState}from "react";
 import "./searchBox.css";
-import { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import Alert from "../alert/alert";
+import { BiSearch } from "react-icons/bi";
+import axios from "axios";
+
 
 const SearchBox = () => {
-  const nav = useNavigate();
-  const [showAlert, setShowAlert] = useState(false);
-  const [categories, setCategories] = useState([]);
-  const [tags, setTags] = useState([]);
-  const [fTags, setFTags] = useState([]);
-  const [query,setQuery] = useState("");
+  const [locations, setLocations] = useState([]);
+  const [filteredLocations, setFilteredLocations] = useState([]);
+  const [l, setL] = useState("");
+  const [q, setQ] = useState("");
+  const [e, setE] = useState(0);
   useEffect(() => {
-    const fet = async () => {
-      await fetch(`${process.env.REACT_APP_API_URL}/categories`)
-        .then((res) => {
-          res.json().then((data) => setCategories(data));
-        })
-        .catch((err) => console.log(err));
-    };
-
-    const fetchTags = async () => {
-      await fetch(`${process.env.REACT_APP_API_URL}/tags`)
-        .then((res) => {
-          res.json().then((data) => setTags(data));
-        })
-        .catch((err) => console.log(err));
-    };
-
-    fet();
-    fetchTags();
-  }, []);
-
-  const handleAlert = () => {
-    setShowAlert(true);
-    setTimeout(() => {
-      setShowAlert(false);
-    }, 2000);
-  };
-
-  const handleClearClick = () => {
-    setQuery("");
-    setFTags([]);
-  };
-
-  const handleSearch = (e) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/locations`).then(res => {
+      setLocations(res.data);
+    }).catch(err => console.log(err));
+  },[]);
+  const handleLocationChange = (e) => {
     e.preventDefault();
-    
-    const param = encodeURIComponent(query);
-    if (param) {
-      const getCat = async (param) => {
-        await fetch(`${process.env.REACT_APP_API_URL}/searchByTag/${param}`).then(res=>{
-          res.json().then(data=>nav(`jobs/${encodeURIComponent(data.category)}`))
-        }).catch(err=>console.log(err));
-      }
-      getCat(param);
-    }
-    else {
-      handleAlert();
-    }
-  };
-
-  const handleInput = (e) => {
-    let result = [];
-        let input = e.target.value;
-        setQuery(input);
-        if (input.length) {
-          result = tags.filter((kw)=>{
-            return kw.toLocaleLowerCase().includes(input.toLocaleLowerCase());
-          });
-          console.log(result);
-        }
-
-    console.log(result);
-
-    setFTags(result.slice(0,6));
-
-  };
+    setL(e.target.value);
+    const filtered = locations.filter((location) =>
+      location.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+    setFilteredLocations(filtered);
+  }
 
   return (
     <div className="search-container">
-      {showAlert && <Alert type="ERROR" msg="NO_INPUT_ERROR" />}
-      <h1>Over 250+ Hiring Partners and Companies</h1>
-      <p>
-        Get your dream job with us. Search through 1000+ jobs and find your
-        suitable profile.
-      </p>
-      <div className="search_wrapper">
-        <div className="search-box">
-          <button onClick={handleSearch}>
-            <AiOutlineSearch size={"18px"} />
-          </button>
-          <input type="text" id="query" onInput={handleInput} value={query} />
-          <button onClick={handleClearClick}>
-            <AiOutlineClose size={"18px"} />
-          </button>
+      <div className="search-header">
+        <h1>Find Your Dream Job</h1>
+        <p>Explore thousands of opportunities tailored just for you</p>
+      </div>
+      <form action="jobs" className="search-wrapper">
+        <BiSearch size={56} color="darkgray" />
+        <input
+          type="text"
+          name="q"
+          id="query"
+          placeholder="Search jobs, companies, or keywords"
+          onChange={(e) => setQ(e.target.value)}
+        />
+        <div className="divider"></div>
+        <select
+          name="e"
+          id="experience"
+          onChange={(e) => setE(e.target.value)}
+        >
+          <option value="0">Select Experience</option>
+          <option value="1">Fresher</option>
+          <option value="2">1 Year</option>
+          <option value="3">2 Years</option>
+          <option value="4">3 Years</option>
+          <option value="5">4 Years</option>
+          <option value="6">5+ Years</option>
+        </select>
+        <div className="divider"></div>
+        <div className="location-wrapper">
+          <input
+            type="text"
+            name="l"
+            value={l}
+            placeholder="Enter location"
+            onChange={handleLocationChange}
+            onFocus={(e) => (e.target.nextSibling.style.display = "block")}
+          />
+          <ul className="location-list" id="location-list">
+            {filteredLocations.map((location, idx) => (
+              <li
+                key={idx}
+                className="location-item"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setL(location);
+                  e.target.parentNode.style.display = "none";
+                }}
+              >
+                {location}
+              </li>
+            ))}
+          </ul>
         </div>
-        <ul id="keywords_box">
-          {
-            fTags.map((tag,idx)=>(
-              <li key={idx} onClick={(e)=>{
-                e.preventDefault();
-                setQuery(e.target.innerText);
-                setFTags([]);
-              }}>{tag}</li>
-            ))
-          }
-        </ul>
-      </div>
-      <div className="tags-box">
-        <ul id="tags">
-          {categories.map((category, idx) => (
-            <Link key={idx} to={`jobs\\${encodeURIComponent(category._id)}`}>
-              <li>{category._id}</li>
-            </Link>
-          ))}
-        </ul>
-      </div>
+        <button
+          className="search-button"
+          type="submit"
+        >
+          Search
+        </button>
+      </form>
     </div>
   );
 };
